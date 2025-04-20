@@ -1,24 +1,66 @@
 <div class="layout">
   <header class="layout__header">Uniterminator</header>
   <nav class="layout__sidebar">
-    <input type="text" placeholder="Expression A"/>
-    <input type="text" placeholder="Expression B"/>
-    <input type="text" placeholder="Operation"/> 
-    <input type="submit" value="Parallelize"/>
-    <input type="submit" value="Eliminate"/>
+    <form class="sidebar__form">
+      <input
+        class="form-control form-control--full"
+        type="text"
+        name="expressionA"
+        placeholder="Expression A"
+      />
+      <input
+        class="form-control form-control--full"
+        type="text"
+        name="expressionB"
+        placeholder="Expression B"
+      />
+      <input
+        class="form-control form-control--full"
+        type="text"
+        name="operation"
+        placeholder="Operation"
+      />
+
+      <div class="sidebar__form-actions">
+        <button type="button" class="form-control form-control--full">
+          Parallelize
+        </button>
+        <button type="button" class="form-control form-control--full">
+          Eliminate
+        </button>
+      </div>
+    </form>
+
+    <div class="sidebar__save">
+      <input
+        class="form-control form-control--flex sidebar__save-input"
+        type="text"
+        name="saveName"
+        placeholder="Save name"
+      />
+      <button
+        type="button"
+        class="form-control form-control--flex sidebar__save-button"
+      >
+        Save
+      </button>
+    </div>
   </nav>
+
   <main class="layout__content">
     <app-expression-arc
       [expressionA]="'4'"
       [operatorSymbol]="';'"
-      [expressionB]="'5'">
-    </app-expression-arc>
+      [expressionB]="'5'"
+    ></app-expression-arc>
     <app-expression-segment
       [expressionA]="'4'"
       [operatorSymbol]="';'"
-      [expressionB]="'5'">
-    </app-expression-segment>
+      [expressionB]="'5'"
+    ></app-expression-segment>
   </main>
+
   <aside class="layout__aside">
+    <div>20/04/2025 23:09</div>
   </aside>
 </div>

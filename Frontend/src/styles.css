@@ -1,4 +1,24 @@
-html, body {
+@font-face {
+  font-family: 'Jura';
+  src: url('/jura-regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+
+:root {
+  --font-primary: 'Jura';
+}
+
+body {
+  font-family: var(--font-primary), sans-serif;
 }
