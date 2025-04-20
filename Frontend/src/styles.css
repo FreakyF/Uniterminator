@@ -19,6 +19,13 @@
   --font-primary: 'Jura';
 }
 
-body {
+html {
   font-family: var(--font-primary), sans-serif;
+}
+
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
 }
