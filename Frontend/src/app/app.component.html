@@ -1,5 +1,6 @@
 <div class="layout">
   <header class="layout__header">Uniterminator</header>
+
   <nav class="layout__sidebar">
     <form class="sidebar__form">
       <input
@@ -21,7 +22,7 @@
         placeholder="Operation"
       />
 
-      <div class="sidebar__form-actions">
+      <div class="sidebar__section sidebar__form-actions">
         <button type="button" class="form-control form-control--full">
           Parallelize
         </button>
@@ -31,17 +32,32 @@
       </div>
     </form>
 
-    <div class="sidebar__save">
+    <div class="sidebar__section sidebar__message">
+      <p class="sidebar__message-text">First, create a parallelized operation</p>
+    </div>
+    <div class="sidebar__section sidebar__swap">
+      <button type="button" class="form-control form-control--flex sidebar__swap-button">
+        Swap A
+      </button>
+      <button type="button" class="form-control form-control--flex sidebar__swap-button">
+        Swap B
+      </button>
+    </div>
+
+    <div class="sidebar__section sidebar__clear">
+      <button type="button" class="form-control form-control--flex sidebar__clear-button">
+        Clear
+      </button>
+    </div>
+
+    <div class="sidebar__section sidebar__save">
       <input
         class="form-control form-control--flex sidebar__save-input"
         type="text"
         name="saveName"
         placeholder="Save name"
       />
-      <button
-        type="button"
-        class="form-control form-control--flex sidebar__save-button"
-      >
+      <button type="button" class="form-control form-control--flex sidebar__save-button">
         Save
       </button>
     </div>
