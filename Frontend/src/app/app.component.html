@@ -1,63 +1,6 @@
 <div class="layout">
-  <title-header/>
-
-  <nav class="layout__sidebar">
-    <form class="sidebar__form">
-      <sidebar-input
-        ariaLabel="Expression A"
-        id="expressionA"
-        placeholder="Expression A"/>
-      <sidebar-input
-        ariaLabel="Expression B"
-        id="expressionB"
-        placeholder="Expression B"/>
-      <sidebar-input
-        ariaLabel="Operation"
-        id="operation"
-        placeholder="Operation"/>
-
-      <div class="sidebar__section sidebar__form-actions">
-        <sidebar-button label="Parallelize"/>
-        <sidebar-button label="Eliminate"/>
-      </div>
-    </form>
-
-    <div class="sidebar__section sidebar__message">
-      <status-message status="First, create a parallelized operation"/>
-    </div>
-    
-    <div class="sidebar__section sidebar__swap">
-      <sidebar-button label="Swap A"/>
-      <sidebar-button label="Swap B"/>
-    </div>
-
-    <div class="sidebar__section sidebar__clear">
-      <sidebar-button label="Clear"/>
-    </div>
-
-    <div class="sidebar__section sidebar__save">
-      <sidebar-input
-        ariaLabel="Name"
-        id="name"
-        placeholder="Name"/>
-      <sidebar-button label="Save"/>
-    </div>
-  </nav>
-
-  <main class="layout__content">
-    <app-expression-arc
-      [expressionA]="'4'"
-      [expressionB]="'5'"
-      [operatorSymbol]="';'"
-    ></app-expression-arc>
-    <app-expression-segment
-      [expressionA]="'4'"
-      [expressionB]="'5'"
-      [operatorSymbol]="';'"
-    ></app-expression-segment>
-  </main>
-
-  <aside class="layout__aside">
-    <div>20/04/2025 23:09</div>
-  </aside>
+  <banner/>
+  <control-panel/>
+  <workspace/>
+  <storage-panel/>
 </div>

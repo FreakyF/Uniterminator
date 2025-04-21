@@ -1,0 +1,38 @@
+:host {
+  --title-header-padding: 1.6vmin;
+  --title-header-radius: 1.6vmin;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-area: header;
+  background-color: pink;
+  font-size: 6vh;
+  font-weight: bold;
+  text-align: center;
+
+  border-radius: var(--title-header-radius);
+  padding: var(--title-header-padding);
+}
+
+.title-header {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title-header__title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.title-header__icon {
+  position: absolute;
+  left: var(--title-header-padding);
+}
+
+.title-header__icon-img {
+  display: block;
+}

@@ -1,0 +1,12 @@
+:host {
+    --control-font-size: 2vh;
+    display: contents;
+}
+
+.layout__aside {
+    grid-area: aside;
+    background-color: palevioletred;
+    font-size: var(--control-font-size);
+    border-radius: 1.6vmin;
+    padding: 1.6vmin;
+}

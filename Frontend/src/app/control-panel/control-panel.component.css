@@ -1,0 +1,54 @@
+:host {
+  --layout-sidebar-gap: 1.6vmin;
+  --layout-sidebar-padding: 1.6vmin;
+  --layout-sidebar-radius: 1.6vmin;
+
+  display: contents;
+}
+
+.layout-sidebar {
+  grid-area: sidebar;
+  background-color: lightcoral;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--layout-sidebar-radius);
+  padding: var(--layout-sidebar-padding);
+}
+
+.layout-sidebar__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--layout-sidebar-gap);
+  flex-shrink: 0;
+}
+
+.layout-sidebar__section {
+  display: flex;
+  gap: var(--layout-sidebar-gap);
+  margin-bottom: var(--layout-sidebar-gap);
+}
+
+.layout-sidebar__section:last-of-type {
+  margin-bottom: 0;
+}
+
+.layout-sidebar__message {
+  margin-top: auto;
+  width: 100%;
+  justify-content: center;
+  font-style: italic;
+  display: flex;
+  gap: var(--layout-sidebar-gap);
+  font-size: 2vh;
+}
+
+.layout-sidebar__form-actions button,
+.layout-sidebar__swap button,
+.layout-sidebar__clear button,
+.layout-sidebar__save button {
+  flex: 1;
+}
+
+.layout-sidebar__save sidebar-text-input {
+  flex: 3;
+}

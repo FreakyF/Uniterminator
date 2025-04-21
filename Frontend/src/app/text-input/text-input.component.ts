@@ -2,10 +2,10 @@ import {Component, Input} from '@angular/core';
 import {ControlValueAccessor} from '@angular/forms';
 
 @Component({
-  selector: 'sidebar-input',
+  selector: 'text-input',
   imports: [],
-  templateUrl: './sidebar-input.component.html',
-  styleUrl: './sidebar-input.component.css'
+  templateUrl: './text-input.component.html',
+  styleUrl: './text-input.component.css'
 })
 export class FormTextInputComponent implements ControlValueAccessor {
   // @Input({required: true}) public formControl!: FormControl<string | null>;

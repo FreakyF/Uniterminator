@@ -1,0 +1,12 @@
+:host {
+  --main-content-padding: 1.6vmin;
+  --main-content-radius: 1.6vmin;
+  display: contents;
+}
+
+.main-content__body {
+  border-radius: var(--main-content-radius);
+  padding: var(--main-content-padding);
+  grid-area: content;
+  background-color: lightsteelblue;
+}
