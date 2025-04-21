@@ -3,76 +3,57 @@
 
   <nav class="layout__sidebar">
     <form class="sidebar__form">
-      <input
-        class="form-control form-control--full"
-        type="text"
-        name="expressionA"
-        placeholder="Expression A"
-      />
-      <input
-        class="form-control form-control--full"
-        type="text"
-        name="expressionB"
-        placeholder="Expression B"
-      />
-      <input
-        class="form-control form-control--full"
-        type="text"
-        name="operation"
-        placeholder="Operation"
-      />
+      <sidebar-input
+        ariaLabel="Expression A"
+        id="expressionA"
+        placeholder="Expression A"/>
+      <sidebar-input
+        ariaLabel="Expression B"
+        id="expressionB"
+        placeholder="Expression B"/>
+      <sidebar-input
+        ariaLabel="Operation"
+        id="operation"
+        placeholder="Operation"/>
 
       <div class="sidebar__section sidebar__form-actions">
-        <button type="button" class="form-control form-control--full">
-          Parallelize
-        </button>
-        <button type="button" class="form-control form-control--full">
-          Eliminate
-        </button>
+        <sidebar-button label="Parallelize"/>
+        <sidebar-button label="Eliminate"/>
       </div>
     </form>
 
     <div class="sidebar__section sidebar__message">
-      <p class="sidebar__message-text">First, create a parallelized operation</p>
+      <status-message status="First, create a parallelized operation"/>
     </div>
+    
     <div class="sidebar__section sidebar__swap">
-      <button type="button" class="form-control form-control--flex sidebar__swap-button">
-        Swap A
-      </button>
-      <button type="button" class="form-control form-control--flex sidebar__swap-button">
-        Swap B
-      </button>
+      <sidebar-button label="Swap A"/>
+      <sidebar-button label="Swap B"/>
     </div>
 
     <div class="sidebar__section sidebar__clear">
-      <button type="button" class="form-control form-control--flex sidebar__clear-button">
-        Clear
-      </button>
+      <sidebar-button label="Clear"/>
     </div>
 
     <div class="sidebar__section sidebar__save">
-      <input
-        class="form-control form-control--flex sidebar__save-input"
-        type="text"
-        name="saveName"
-        placeholder="Save name"
-      />
-      <button type="button" class="form-control form-control--flex sidebar__save-button">
-        Save
-      </button>
+      <sidebar-input
+        ariaLabel="Name"
+        id="name"
+        placeholder="Name"/>
+      <sidebar-button label="Save"/>
     </div>
   </nav>
 
   <main class="layout__content">
     <app-expression-arc
       [expressionA]="'4'"
-      [operatorSymbol]="';'"
       [expressionB]="'5'"
+      [operatorSymbol]="';'"
     ></app-expression-arc>
     <app-expression-segment
       [expressionA]="'4'"
-      [operatorSymbol]="';'"
       [expressionB]="'5'"
+      [operatorSymbol]="';'"
     ></app-expression-segment>
   </main>
 
