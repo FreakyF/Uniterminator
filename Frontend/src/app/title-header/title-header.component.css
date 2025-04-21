@@ -1,0 +1,35 @@
+:host {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: pink;
+    font-size: 6vh;
+    font-weight: bold;
+    text-align: center;
+    border-radius: var(--radius);
+    padding: var(--padding);
+}
+
+.header {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header__title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.header__icon {
+    position: absolute;
+    left: var(--padding);
+}
+
+.header__icon-img {
+    display: block;
+}

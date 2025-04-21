@@ -1,12 +1,14 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ExpressionArcComponent} from './expression-arc/expression-arc.component';
 import {ExpressionSegmentComponent} from './expression-segment/expression-segment.component';
+import {TitleHeaderComponent} from './title-header/title-header.component';
 
 @Component({
   selector: 'app-root',
   imports: [
     ExpressionArcComponent,
-    ExpressionSegmentComponent
+    ExpressionSegmentComponent,
+    TitleHeaderComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
