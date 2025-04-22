@@ -1,8 +1,17 @@
 <nav class="layout-sidebar">
   <form class="layout-sidebar__form">
+
     <div class="layout-sidebar__section layout-sidebar__form-actions">
-      <control-button label="Parallelize" (click)="parallelize()"></control-button>
-      <control-button label="Eliminate"/>
+      <control-button
+        label="Parallelize"
+        (click)="parallelize()"
+        [class.active]="mode === 'parallelize'">
+      </control-button>
+      <control-button
+        label="Eliminate"
+        (click)="eliminate()"
+        [class.active]="mode === 'eliminate'">
+      </control-button>
     </div>
 
     <text-input
@@ -29,29 +38,40 @@
       placeholder="Operation">
     </text-input>
 
+    <text-input
+      *ngIf="mode === 'eliminate'"
+      [(ngModel)]="expressionC"
+      name="expression"
+      ariaLabel="Expression"
+      id="expression"
+      placeholder="Expression">
+    </text-input>
+
     <div class="layout-sidebar__section layout-sidebar__form-actions">
-      <control-button label="Draw"/>
+      <control-button
+        label="Draw"
+        (click)="draw()">
+      </control-button>
     </div>
+
   </form>
 
   <div class="layout-sidebar__section layout-sidebar__message">
-    <notification status="First, create a parallelized operation"/>
+    <notification status="First, create a parallelized operation"></notification>
   </div>
-
   <div class="layout-sidebar__section layout-sidebar__swap">
-    <control-button label="Swap A"/>
-    <control-button label="Swap B"/>
+    <control-button label="Swap A"></control-button>
+    <control-button label="Swap B"></control-button>
   </div>
-
   <div class="layout-sidebar__section layout-sidebar__clear">
-    <control-button label="Clear"/>
+    <control-button label="Clear"></control-button>
   </div>
-
   <div class="layout-sidebar__section layout-sidebar__save">
     <text-input
       ariaLabel="Name"
       id="name"
-      placeholder="Name"/>
-    <control-button label="Save"/>
+      placeholder="Name">
+    </text-input>
+    <control-button label="Save"></control-button>
   </div>
 </nav>

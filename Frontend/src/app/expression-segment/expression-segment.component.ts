@@ -2,21 +2,23 @@ import {AfterViewInit, Component, ElementRef, Input, OnChanges, SimpleChanges, V
 
 @Component({
   selector: 'app-expression-segment',
-  imports: [],
   templateUrl: './expression-segment.component.html',
-  styleUrl: './expression-segment.component.css'
+  styleUrls: ['./expression-segment.component.css']
 })
 export class ExpressionSegmentComponent implements AfterViewInit, OnChanges {
   @Input() expressionA = '';
   @Input() operatorSymbol = '';
   @Input() expressionB = '';
+  @Input() expressionC = '';
 
   @ViewChild('svgRoot', {static: true}) svgRoot!: ElementRef<SVGSVGElement>;
   @ViewChild('textA', {static: true}) textA!: ElementRef<SVGTextElement>;
   @ViewChild('textOperator', {static: true}) textOperator!: ElementRef<SVGTextElement>;
   @ViewChild('textB', {static: true}) textB!: ElementRef<SVGTextElement>;
+  @ViewChild('textSep', {static: true}) textSep!: ElementRef<SVGTextElement>;
+  @ViewChild('textC', {static: true}) textC!: ElementRef<SVGTextElement>;
 
-  public arcPath = '';
+  public segmentPath = '';
 
   private readonly fontSize = 48;
   private readonly verticalGap = 20;
@@ -39,29 +41,34 @@ export class ExpressionSegmentComponent implements AfterViewInit, OnChanges {
 
     const heightA = this.resetAndMeasure(this.textA);
     const heightOp = this.resetAndMeasure(this.textOperator);
-    this.resetAndMeasure(this.textB);
+    const heightB = this.resetAndMeasure(this.textB);
+    const heightSep = this.resetAndMeasure(this.textSep);
 
     const yA = this.verticalGap;
     const yOp = yA + heightA + this.verticalGap;
     const yB = yOp + heightOp + this.verticalGap;
+    const ySep = yB + heightB + this.verticalGap;
+    const yC = ySep + heightSep + this.verticalGap;
 
     const xText = this.leftPadding + this.verticalGap;
 
     this.setPosition(this.textA, xText, yA + this.fontSize);
     this.setPosition(this.textOperator, xText, yOp + this.fontSize);
     this.setPosition(this.textB, xText, yB + this.fontSize);
+    this.setPosition(this.textSep, xText, ySep + this.fontSize);
+    this.setPosition(this.textC, xText, yC + this.fontSize);
 
     const boxA = this.textA.nativeElement.getBBox();
-    const boxB = this.textB.nativeElement.getBBox();
-    this.arcPath = this.buildLine(boxA, boxB);
+    const boxC = this.textC.nativeElement.getBBox();
+    this.segmentPath = this.buildLine(boxA, boxC);
 
-    const svgWidth = xText + boxB.width + this.rightPadding;
-    const svgHeight = boxB.y + boxB.height + this.verticalGap;
+    const svgWidth = xText + boxC.width + this.rightPadding;
+    const svgHeight = boxC.y + boxC.height + this.verticalGap;
     this.setSvgSize(svgWidth, svgHeight);
   }
 
   private applyFontSize(): void {
-    [this.textA, this.textOperator, this.textB]
+    [this.textA, this.textOperator, this.textB, this.textSep, this.textC]
       .forEach(ref =>
         ref.nativeElement.setAttribute('font-size', `${this.fontSize}px`)
       );
@@ -84,10 +91,13 @@ export class ExpressionSegmentComponent implements AfterViewInit, OnChanges {
     el.setAttribute('y', `${y}`);
   }
 
-  private buildLine(boxA: DOMRect, boxB: DOMRect): string {
+  private buildLine(boxA: DOMRect, boxC: DOMRect): string {
+    if (boxA.width === 0 && boxC.width === 0) {
+      return '';
+    }
     const xLine = this.leftPadding;
     const yStart = boxA.y + boxA.height / 2;
-    const yEnd = boxB.y + boxB.height / 2;
+    const yEnd = boxC.y + boxC.height / 2;
     const half = this.tickLength / 2;
 
     return [

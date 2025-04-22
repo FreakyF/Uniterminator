@@ -1,6 +1,6 @@
 <svg #svgRoot>
   <path
-    [attr.d]="arcPath"
+    [attr.d]="segmentPath"
     fill="none"
     stroke="#A91B3F"
     stroke-width="3">
@@ -9,4 +9,8 @@
   <text #textA>{{ expressionA }}</text>
   <text #textOperator>{{ operatorSymbol }}</text>
   <text #textB>{{ expressionB }}</text>
+
+  <text #textSep>;</text>
+
+  <text #textC>{{ expressionC }}</text>
 </svg>

@@ -1,13 +1,14 @@
 <main class="main-content__body">
   <app-expression-arc
-    [expressionA]="expressionA"
-    [expressionB]="expressionB"
-    [operatorSymbol]="operatorSymbol">
+    [expressionA]="parallelExpressionA"
+    [expressionB]="parallelExpressionB"
+    [operatorSymbol]="parallelOperatorSymbol">
   </app-expression-arc>
 
   <app-expression-segment
-    [expressionA]="expressionA"
-    [expressionB]="expressionB"
-    [operatorSymbol]="operatorSymbol">
+    [expressionA]="eliminateExpressionA"
+    [expressionB]="eliminateExpressionB"
+    [operatorSymbol]="eliminateOperatorSymbol"
+    [expressionC]="eliminateExpressionC">
   </app-expression-segment>
 </main>
