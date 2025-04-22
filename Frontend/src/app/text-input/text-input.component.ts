@@ -1,14 +1,18 @@
-import {Component, Input} from '@angular/core';
-import {ControlValueAccessor} from '@angular/forms';
+import {Component, forwardRef, Input} from '@angular/core';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 @Component({
   selector: 'text-input',
   imports: [],
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => TextInputComponent),
+    multi: true
+  }],
   templateUrl: './text-input.component.html',
   styleUrl: './text-input.component.css'
 })
-export class FormTextInputComponent implements ControlValueAccessor {
-  // @Input({required: true}) public formControl!: FormControl<string | null>;
+export class TextInputComponent implements ControlValueAccessor {
   @Input({required: true}) placeholder!: string;
   @Input({required: true}) id!: string;
   @Input({required: true}) ariaLabel!: string;
@@ -16,20 +20,8 @@ export class FormTextInputComponent implements ControlValueAccessor {
   protected value: string = '';
   protected isDisabled: boolean = false;
 
-  protected onChange!: (value: string) => void;
-  protected onTouched!: () => void;
-
-  protected get IsInvalid(): boolean {
-    // const isInvalid: boolean = this.formControl.invalid;
-    // if (!isInvalid) {
-    //   return false;
-    // }
-    //
-    // const isDirty: boolean = this.formControl.dirty;
-    // const isTouched: boolean = this.formControl.touched;
-    // return isDirty || isTouched;
-    return false;
-  }
+  protected onChange: (value: string) => void = () => {};
+  protected onTouched: () => void = () => {};
 
   public registerOnChange(fn: (value: string) => void): void {
     this.onChange = fn;

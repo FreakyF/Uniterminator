@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'control-button',
@@ -8,4 +8,7 @@ import {Component, Input} from '@angular/core';
 })
 export class ControlButtonComponent {
   @Input() label!: string;
+
+  @Output() onKeyDown = new EventEmitter<KeyboardEvent>();
+  @Output() onKeyUp = new EventEmitter<KeyboardEvent>();
 }

@@ -1,10 +1,7 @@
 <input
   (blur)="onTouched()"
   (input)="onInput($event)"
-  TrimWhitespaces
   [attr.aria-label]="ariaLabel"
-  [class.ng-dirty]="IsInvalid"
-  [class.ng-invalid]="IsInvalid"
   [disabled]="isDisabled"
   [id]="id"
   [placeholder]="placeholder"

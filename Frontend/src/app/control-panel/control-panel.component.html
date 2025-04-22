@@ -1,20 +1,31 @@
 <nav class="layout-sidebar">
   <form class="layout-sidebar__form">
     <text-input
+      [(ngModel)]="expressionA"
+      name="expressionA"
       ariaLabel="Expression A"
       id="expressionA"
-      placeholder="Expression A"/>
+      placeholder="Expression A">
+    </text-input>
+
     <text-input
+      [(ngModel)]="expressionB"
+      name="expressionB"
       ariaLabel="Expression B"
       id="expressionB"
-      placeholder="Expression B"/>
+      placeholder="Expression B">
+    </text-input>
+
     <text-input
+      [(ngModel)]="operation"
+      name="operation"
       ariaLabel="Operation"
       id="operation"
-      placeholder="Operation"/>
+      placeholder="Operation">
+    </text-input>
 
     <div class="layout-sidebar__section layout-sidebar__form-actions">
-      <control-button label="Parallelize"/>
+      <control-button label="Parallelize" (click)="parallelize()"></control-button>
       <control-button label="Eliminate"/>
     </div>
   </form>

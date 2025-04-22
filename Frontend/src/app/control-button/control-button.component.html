@@ -1,3 +1,8 @@
-<button [attr.aria-label]="label" class="sidebar-button" type="button">
+<button
+  [attr.aria-label]="label"
+  class="sidebar-button"
+  type="button"
+  (keydown)="onKeyDown.emit($event)"
+  (keyup)="onKeyUp.emit($event)">
   {{ label }}
 </button>
