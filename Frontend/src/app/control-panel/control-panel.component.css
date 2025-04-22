@@ -2,7 +2,6 @@
   --layout-sidebar-gap: 1.6vmin;
   --layout-sidebar-padding: 1.6vmin;
   --layout-sidebar-radius: 1.6vmin;
-
   display: contents;
 }
 
@@ -29,6 +28,10 @@
 }
 
 .layout-sidebar__section:last-of-type {
+  margin-bottom: 0;
+}
+
+.layout-sidebar__form > .layout-sidebar__section.layout-sidebar__form-actions:first-of-type {
   margin-bottom: 0;
 }
 

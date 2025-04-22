@@ -1,5 +1,10 @@
 <nav class="layout-sidebar">
   <form class="layout-sidebar__form">
+    <div class="layout-sidebar__section layout-sidebar__form-actions">
+      <control-button label="Parallelize" (click)="parallelize()"></control-button>
+      <control-button label="Eliminate"/>
+    </div>
+
     <text-input
       [(ngModel)]="expressionA"
       name="expressionA"
@@ -25,8 +30,7 @@
     </text-input>
 
     <div class="layout-sidebar__section layout-sidebar__form-actions">
-      <control-button label="Parallelize" (click)="parallelize()"></control-button>
-      <control-button label="Eliminate"/>
+      <control-button label="Draw"/>
     </div>
   </form>
 
