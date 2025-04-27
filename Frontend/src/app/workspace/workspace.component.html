@@ -1,28 +1,30 @@
 <main class="main-content__body">
-  <expression-arc
-    [expressionA]="parallelExpressionA"
-    [expressionB]="parallelExpressionB"
-    [operatorSymbol]="parallelOperatorSymbol">
-  </expression-arc>
+  <div class="component-container">
+    <expression-arc
+      [expressionA]="parallelExpressionA"
+      [expressionB]="parallelExpressionB"
+      [operatorSymbol]="parallelOperatorSymbol">
+    </expression-arc>
 
-  <expression-segment
-    [expressionA]="eliminateExpressionA"
-    [expressionB]="eliminateExpressionB"
-    [operatorSymbol]="eliminateOperatorSymbol"
-    [expressionC]="eliminateExpressionC">
-  </expression-segment>
+    <expression-segment
+      [expressionA]="eliminateExpressionA"
+      [expressionB]="eliminateExpressionB"
+      [operatorSymbol]="eliminateOperatorSymbol"
+      [expressionC]="eliminateExpressionC">
+    </expression-segment>
 
-  <expression-arc-with-segment
-    *ngIf="swapSide"
-    [expressionA]="parallelExpressionA"
-    [expressionB]="parallelExpressionB"
-    [operatorSymbol]="parallelOperatorSymbol"
-    [swapSide]="swapSide"
-    [segmentParams]="{
-      expressionA: eliminateExpressionA,
-      expressionB: eliminateExpressionB,
-      operation:  eliminateOperatorSymbol,
-      expressionC: eliminateExpressionC
-    }">
-  </expression-arc-with-segment>
+    <expression-arc-with-segment
+      *ngIf="swapSide"
+      [expressionA]="parallelExpressionA"
+      [expressionB]="parallelExpressionB"
+      [operatorSymbol]="parallelOperatorSymbol"
+      [swapSide]="swapSide"
+      [segmentParams]="{
+        expressionA: eliminateExpressionA,
+        expressionB: eliminateExpressionB,
+        operation:  eliminateOperatorSymbol,
+        expressionC: eliminateExpressionC
+      }">
+    </expression-arc-with-segment>
+  </div>
 </main>

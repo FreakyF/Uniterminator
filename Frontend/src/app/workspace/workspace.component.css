@@ -9,4 +9,12 @@
   padding: var(--main-content-padding);
   grid-area: content;
   background-color: lightsteelblue;
+  overflow: auto;
+}
+
+.component-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
 }
