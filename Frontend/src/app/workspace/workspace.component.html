@@ -11,4 +11,18 @@
     [operatorSymbol]="eliminateOperatorSymbol"
     [expressionC]="eliminateExpressionC">
   </app-expression-segment>
+
+  <app-expression-arc-with-segment
+    *ngIf="swapSide"
+    [expressionA]="parallelExpressionA"
+    [expressionB]="parallelExpressionB"
+    [operatorSymbol]="parallelOperatorSymbol"
+    [swapSide]="swapSide"
+    [segmentParams]="{
+      expressionA: eliminateExpressionA,
+      expressionB: eliminateExpressionB,
+      operation:  eliminateOperatorSymbol,
+      expressionC: eliminateExpressionC
+    }">
+  </app-expression-arc-with-segment>
 </main>

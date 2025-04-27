@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 
 export interface ParallelParams {
   expressionA: string;
@@ -20,6 +20,11 @@ export interface EliminateParams {
 export class ExpressionService {
   private readonly _parallel = new BehaviorSubject<ParallelParams>({expressionA: '', expressionB: '', operation: ''});
   readonly parallel$ = this._parallel.asObservable();
+  private readonly swapSubject = new Subject<'A' | 'B'>();
+  public swap$ = this.swapSubject.asObservable();
+
+  private readonly clearSubject = new Subject<void>();
+  public clear$ = this.clearSubject.asObservable();
 
   private readonly _eliminate = new BehaviorSubject<EliminateParams>({
     expressionA: '',
@@ -40,5 +45,17 @@ export class ExpressionService {
       operation: operation,
       expressionC: expressionC
     });
+  }
+
+  swapA() {
+    this.swapSubject.next('A');
+  }
+
+  swapB() {
+    this.swapSubject.next('B');
+  }
+
+  clear() {
+    this.clearSubject.next();
   }
 }

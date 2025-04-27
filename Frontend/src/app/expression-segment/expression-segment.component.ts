@@ -95,7 +95,7 @@ export class ExpressionSegmentComponent implements AfterViewInit, OnChanges {
     if (boxA.width === 0 && boxC.width === 0) {
       return '';
     }
-    const xLine = this.leftPadding;
+    const xLine = this.leftPadding + 12;
     const yStart = boxA.y + boxA.height / 2;
     const yEnd = boxC.y + boxC.height / 2;
     const half = this.tickLength / 2;

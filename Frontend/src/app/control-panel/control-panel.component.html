@@ -60,11 +60,20 @@
     <notification status="First, create a parallelized operation"></notification>
   </div>
   <div class="layout-sidebar__section layout-sidebar__swap">
-    <control-button label="Swap A"></control-button>
-    <control-button label="Swap B"></control-button>
+    <control-button
+      label="Swap A"
+      (click)="onSwapA()">
+    </control-button>
+    <control-button
+      label="Swap B"
+      (click)="onSwapB()">
+    </control-button>
   </div>
   <div class="layout-sidebar__section layout-sidebar__clear">
-    <control-button label="Clear"></control-button>
+    <control-button
+      label="Clear"
+      (click)="clear()">
+    </control-button>
   </div>
   <div class="layout-sidebar__section layout-sidebar__save">
     <text-input
