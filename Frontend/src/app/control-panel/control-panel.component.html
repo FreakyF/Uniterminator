@@ -5,11 +5,13 @@
       <control-button
         label="Parallelize"
         (click)="parallelize()"
+        (keydown.enter)="parallelize()"
         [class.active]="mode === 'parallelize'">
       </control-button>
       <control-button
         label="Eliminate"
         (click)="eliminate()"
+        (keydown.enter)="eliminate()"
         [class.active]="mode === 'eliminate'">
       </control-button>
     </div>
@@ -50,29 +52,32 @@
     <div class="layout-sidebar__section layout-sidebar__form-actions">
       <control-button
         label="Draw"
-        (click)="draw()">
+        (click)="draw()"
+        (keydown.enter)="draw()">
       </control-button>
     </div>
 
   </form>
 
   <div class="layout-sidebar__section layout-sidebar__message">
-    <notification status="First, create a parallelized operation"></notification>
   </div>
   <div class="layout-sidebar__section layout-sidebar__swap">
     <control-button
       label="Swap A"
-      (click)="onSwapA()">
+      (click)="onSwapA()"
+      (keydown.enter)="onSwapA()">
     </control-button>
     <control-button
       label="Swap B"
-      (click)="onSwapB()">
+      (click)="onSwapB()"
+      (keydown.enter)="onSwapB()">
     </control-button>
   </div>
   <div class="layout-sidebar__section layout-sidebar__clear">
     <control-button
       label="Clear"
-      (click)="clear()">
+      (click)="clear()"
+      (keydown.enter)="clear()">
     </control-button>
   </div>
   <div class="layout-sidebar__section layout-sidebar__save">

@@ -4,7 +4,6 @@ import {ControlButtonComponent} from '../control-button/control-button.component
 import {ExpressionService} from '../expression.service';
 import {FormsModule} from '@angular/forms';
 import {NgIf} from '@angular/common';
-import {NotificationComponent} from '../notification/notification.component';
 
 @Component({
   selector: 'control-panel',
@@ -12,8 +11,7 @@ import {NotificationComponent} from '../notification/notification.component';
     TextInputComponent,
     ControlButtonComponent,
     FormsModule,
-    NgIf,
-    NotificationComponent
+    NgIf
   ],
   templateUrl: './control-panel.component.html',
   styleUrl: './control-panel.component.css'

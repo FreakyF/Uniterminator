@@ -1,18 +1,18 @@
 <main class="main-content__body">
-  <app-expression-arc
+  <expression-arc
     [expressionA]="parallelExpressionA"
     [expressionB]="parallelExpressionB"
     [operatorSymbol]="parallelOperatorSymbol">
-  </app-expression-arc>
+  </expression-arc>
 
-  <app-expression-segment
+  <expression-segment
     [expressionA]="eliminateExpressionA"
     [expressionB]="eliminateExpressionB"
     [operatorSymbol]="eliminateOperatorSymbol"
     [expressionC]="eliminateExpressionC">
-  </app-expression-segment>
+  </expression-segment>
 
-  <app-expression-arc-with-segment
+  <expression-arc-with-segment
     *ngIf="swapSide"
     [expressionA]="parallelExpressionA"
     [expressionB]="parallelExpressionB"
@@ -24,5 +24,5 @@
       operation:  eliminateOperatorSymbol,
       expressionC: eliminateExpressionC
     }">
-  </app-expression-arc-with-segment>
+  </expression-arc-with-segment>
 </main>
