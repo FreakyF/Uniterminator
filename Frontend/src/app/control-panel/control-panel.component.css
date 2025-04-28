@@ -7,7 +7,9 @@
 
 .layout-sidebar {
   grid-area: sidebar;
-  background-color: lightcoral;
+  background-color: #2A2D34;
+  border: 0.05vmin solid ghostwhite;
+  box-shadow: 0 0 0.05vmin ghostwhite;
   display: flex;
   flex-direction: column;
   border-radius: var(--layout-sidebar-radius);

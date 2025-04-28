@@ -70,10 +70,11 @@ export class ExpressionArcComponent implements AfterViewInit, OnChanges {
   }
 
   private applyFontSize(): void {
-    [this.textA, this.textOperator, this.textB]
-      .forEach(ref =>
-        ref.nativeElement.setAttribute('font-size', `${this.fontSize}px`)
-      );
+    [this.textA, this.textOperator, this.textB].forEach(ref => {
+      const el = ref.nativeElement;
+      el.setAttribute('font-size', `${this.fontSize}px`);
+      el.setAttribute('fill', '#F8F8FF');
+    });
   }
 
   private resetAndMeasure(elRef: ElementRef<SVGTextElement>): number {

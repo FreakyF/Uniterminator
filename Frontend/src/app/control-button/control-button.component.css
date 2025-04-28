@@ -14,9 +14,10 @@
   font-size: var(--sidebar-button-font-size);
   line-height: var(--sidebar-button-line-height);
   padding: var(--sidebar-button-padding-vertical) var(--sidebar-button-padding-horizontal);
-  border: var(--sidebar-button-border-width) solid #ccc;
+  border: 0.05vmin solid #f56557;
+  color: black;
   border-radius: var(--sidebar-button-radius);
-  background-color: #fff;
+  background-color: #FF6F61;
   cursor: pointer;
   width: auto;
   flex: 1;

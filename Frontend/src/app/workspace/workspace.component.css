@@ -8,7 +8,9 @@
   border-radius: var(--main-content-radius);
   padding: var(--main-content-padding);
   grid-area: content;
-  background-color: lightsteelblue;
+  background-color: #2A2D34;
+  border: 0.05vmin solid #E5E5E5;
+  box-shadow: 0 0 0.05vmin ghostwhite;
   overflow: auto;
 }
 

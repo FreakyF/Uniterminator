@@ -73,9 +73,11 @@ export class ExpressionSegmentComponent implements AfterViewInit, OnChanges {
 
   private applyFontSize(): void {
     [this.textA, this.textOperator, this.textB, this.textSep, this.textC]
-      .forEach(ref =>
-        ref.nativeElement.setAttribute('font-size', `${this.fontSize}px`)
-      );
+      .forEach(ref => {
+        const el = ref.nativeElement;
+        el.setAttribute('font-size', `${this.fontSize}px`);
+        el.setAttribute('fill', '#F8F8FF');
+      });
   }
 
   private resetAndMeasure(elRef: ElementRef<SVGTextElement>): number {

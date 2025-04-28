@@ -14,8 +14,9 @@
   font-size: var(--sidebar-input-font-size);
   line-height: var(--sidebar-input-line-height);
   padding: var(--sidebar-input-padding-vertical) var(--sidebar-input-padding-horizontal);
-  border: var(--sidebar-input-border-width) solid #ccc;
-  border-radius: var(--sidebar-input-radius);
-  background-color: #fff;
+  border: 0.05vmin solid #f0f0f4;
+  color: black;
+  border-radius: var(--sidebar-input-padding);
+  background-color: #F4F4F4;
   width: 100%;
 }

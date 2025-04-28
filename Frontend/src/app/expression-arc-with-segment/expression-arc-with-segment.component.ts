@@ -99,8 +99,12 @@ export class ExpressionArcWithSegmentComponent implements AfterViewInit, OnChang
     const xLine = anchorBox.x + anchorBox.width / 2 - 20;
     const half = this.tickLength / 2;
 
-    [this.segA, this.segOp, this.segB, this.segSep, this.segC]
-      .forEach(r => r.nativeElement.setAttribute('font-size', `${this.fontSize}px`));
+    [ this.segA, this.segOp, this.segB, this.segSep, this.segC ]
+      .forEach(r => {
+        const el = r.nativeElement;
+        el.setAttribute('font-size', `${this.fontSize}px`);
+        el.setAttribute('fill', '#F8F8FF');
+      });
 
     const hA   = this.segA.nativeElement.getBBox().height;
     const hOp  = this.segOp.nativeElement.getBBox().height;
@@ -136,7 +140,11 @@ export class ExpressionArcWithSegmentComponent implements AfterViewInit, OnChang
   }
 
   private applyFontSize(refs: ElementRef<SVGTextElement>[]) {
-    refs.forEach(r => r.nativeElement.setAttribute('font-size', `${this.fontSize}px`));
+    refs.forEach(r => {
+      const el = r.nativeElement;
+      el.setAttribute('font-size', `${this.fontSize}px`);
+      el.setAttribute('fill', '#F8F8FF');
+    });
   }
 
   private resetAndMeasure(elRef: ElementRef<SVGTextElement>): number {
