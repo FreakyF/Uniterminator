@@ -9,7 +9,6 @@
   border: 0.05vmin solid ghostwhite;
   color: ghostwhite;
   font-size: 6vh;
-  font-weight: bold;
   text-align: center;
   border-radius: var(--title-header-radius);
   padding: var(--title-header-padding);

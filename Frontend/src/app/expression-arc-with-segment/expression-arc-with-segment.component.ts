@@ -29,12 +29,12 @@ export class ExpressionArcWithSegmentComponent implements AfterViewInit, OnChang
   public arcPath = '';
   public segmentPath = '';
 
-  private readonly fontSize      = 48;
+  private readonly fontSize = 48;
   private readonly horizontalGap = 20;
-  private readonly topPadding    = 20;
+  private readonly topPadding = 20;
   private readonly bottomPadding = 450;
-  private readonly tickLength    = 16;
-  private readonly verticalGap   = 20;
+  private readonly tickLength = 16;
+  private readonly verticalGap = 20;
 
   private readonly displayWidth = 15;
 
@@ -77,17 +77,28 @@ export class ExpressionArcWithSegmentComponent implements AfterViewInit, OnChang
     const boxB = this.textB.nativeElement.getBBox();
     this.arcPath = this.buildArc(boxA, boxB);
 
-    if (
-      this.swapSide &&
+    const validSegment =
       this.segmentParams?.expressionA.trim() &&
-      this.segmentParams?.operation.trim() &&
-      this.segmentParams?.expressionB.trim() &&
-      this.segmentParams?.expressionC.trim()
-    ) {
+      this.segmentParams.operation.trim() &&
+      this.segmentParams.expressionB.trim() &&
+      this.segmentParams.expressionC.trim();
+
+    if (this.swapSide && validSegment) {
       const anchorTextRef = this.swapSide === 'A' ? this.textA : this.textB;
       anchorTextRef.nativeElement.setAttribute('visibility', 'hidden');
+
+      this.segA.nativeElement.textContent = this.segmentParams!.expressionA;
+      this.segOp.nativeElement.textContent = this.segmentParams!.operation;
+      this.segB.nativeElement.textContent = this.segmentParams!.expressionB;
+      this.segSep.nativeElement.textContent = '=';
+      this.segC.nativeElement.textContent = this.segmentParams!.expressionC;
+
       const anchorBox = this.swapSide === 'A' ? boxA : boxB;
       this.renderSegmentUnder(anchorBox, baselineY);
+    } else {
+      [this.segA, this.segOp, this.segB, this.segSep, this.segC].forEach(seg => {
+        seg.nativeElement.textContent = '';
+      });
     }
 
     const svgW = boxB.x + boxB.width + 2 * this.horizontalGap;
@@ -99,23 +110,23 @@ export class ExpressionArcWithSegmentComponent implements AfterViewInit, OnChang
     const xLine = anchorBox.x + anchorBox.width / 2 - 20;
     const half = this.tickLength / 2;
 
-    [ this.segA, this.segOp, this.segB, this.segSep, this.segC ]
+    [this.segA, this.segOp, this.segB, this.segSep, this.segC]
       .forEach(r => {
         const el = r.nativeElement;
         el.setAttribute('font-size', `${this.fontSize}px`);
         el.setAttribute('fill', '#F8F8FF');
       });
 
-    const hA   = this.segA.nativeElement.getBBox().height;
-    const hOp  = this.segOp.nativeElement.getBBox().height;
-    const hB   = this.segB.nativeElement.getBBox().height;
+    const hA = this.segA.nativeElement.getBBox().height;
+    const hOp = this.segOp.nativeElement.getBBox().height;
+    const hB = this.segB.nativeElement.getBBox().height;
     const hSep = this.segSep.nativeElement.getBBox().height;
 
-    const yA   = baselineY;
-    const yOp  = yA    + hA   + this.verticalGap;
-    const yB   = yOp   + hOp  + this.verticalGap;
-    const ySep = yB    + hB   + this.verticalGap;
-    const yC   = ySep  + hSep + this.verticalGap;
+    const yA = baselineY;
+    const yOp = yA + hA + this.verticalGap;
+    const yB = yOp + hOp + this.verticalGap;
+    const ySep = yB + hB + this.verticalGap;
+    const yC = ySep + hSep + this.verticalGap;
 
     this.segA.nativeElement.setAttribute('x', `${anchorBox.x}`);
     this.segA.nativeElement.setAttribute('y', `${yA}`);
@@ -129,8 +140,8 @@ export class ExpressionArcWithSegmentComponent implements AfterViewInit, OnChang
     this.segC.nativeElement.setAttribute('y', `${yC}`);
 
     const yStart = anchorBox.y + anchorBox.height / 2;
-    const boxC   = this.segC.nativeElement.getBBox();
-    const yEnd   = boxC.y + boxC.height / 2;
+    const boxC = this.segC.nativeElement.getBBox();
+    const yEnd = boxC.y + boxC.height / 2;
 
     this.segmentPath = [
       `M ${xLine - half} ${yStart} L ${xLine + half} ${yStart}`,
@@ -160,9 +171,9 @@ export class ExpressionArcWithSegmentComponent implements AfterViewInit, OnChang
   }
 
   private buildArc(boxA: DOMRect, boxB: DOMRect): string {
-    const yTop   = Math.min(boxA.y, boxB.y);
+    const yTop = Math.min(boxA.y, boxB.y);
     const xStart = boxA.x + boxA.width / 2;
-    const xEnd   = boxB.x + boxB.width / 2;
+    const xEnd = boxB.x + boxB.width / 2;
     const radius = xEnd - xStart;
     return `M ${xStart} ${yTop} A ${radius} ${radius} 0 0 1 ${xEnd} ${yTop}`;
   }

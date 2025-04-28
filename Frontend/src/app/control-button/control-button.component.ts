@@ -8,4 +8,7 @@ import {Component, Input} from '@angular/core';
 })
 export class ControlButtonComponent {
   @Input() label!: string;
+  get isWhiteBackground(): boolean {
+    return ['Eliminate', 'Parallelize', 'Swap A', 'Swap B'].includes(this.label);
+  }
 }
