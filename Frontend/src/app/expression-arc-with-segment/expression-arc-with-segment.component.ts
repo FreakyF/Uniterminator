@@ -90,7 +90,7 @@ export class ExpressionArcWithSegmentComponent implements AfterViewInit, OnChang
       this.segA.nativeElement.textContent = this.segmentParams!.expressionA;
       this.segOp.nativeElement.textContent = this.segmentParams!.operation;
       this.segB.nativeElement.textContent = this.segmentParams!.expressionB;
-      this.segSep.nativeElement.textContent = '=';
+      this.segSep.nativeElement.textContent = ';';
       this.segC.nativeElement.textContent = this.segmentParams!.expressionC;
 
       const anchorBox = this.swapSide === 'A' ? boxA : boxB;

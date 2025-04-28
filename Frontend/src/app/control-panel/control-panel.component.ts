@@ -23,6 +23,9 @@ export class ControlPanelComponent {
   public expressionC = '';
 
   public mode: 'parallelize' | 'eliminate' = 'parallelize';
+  swapMode: 'A' | 'B' | null = null;
+  isDrawn = false;
+
 
   constructor(private readonly expressionService: ExpressionService) {
   }
@@ -37,10 +40,12 @@ export class ControlPanelComponent {
 
   onSwapA() {
     this.expressionService.swapA();
+    this.swapMode = 'A';
   }
 
   onSwapB() {
     this.expressionService.swapB();
+    this.swapMode = 'B';
   }
 
   draw(): void {
@@ -58,7 +63,9 @@ export class ControlPanelComponent {
         this.expressionC
       );
     }
+    this.isDrawn = !!this.expressionA.trim() && !!this.expressionB.trim() && !!this.operation.trim() && !!this.expressionA.trim() && !!this.expressionB.trim() && !!this.operation.trim() && !!this.expressionC.trim();
   }
+
 
   clear(): void {
     this.expressionA = '';
@@ -67,5 +74,7 @@ export class ControlPanelComponent {
     this.expressionC = '';
 
     this.expressionService.clear();
+    this.isDrawn = false;
+    this.swapMode = null;
   }
 }

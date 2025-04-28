@@ -2,6 +2,13 @@
   --layout-sidebar-gap: 1.6vmin;
   --layout-sidebar-padding: 1.6vmin;
   --layout-sidebar-radius: 1.6vmin;
+  --sidebar-select-padding: 1.6vmin;
+  --sidebar-select-radius: 1.6vmin;
+  --sidebar-select-font-size: 2vh;
+  --sidebar-select-line-height: 1.4;
+  --sidebar-select-padding-vertical: 1.2vmin;
+  --sidebar-select-padding-horizontal: 2.4vmin;
+  --sidebar-select-border-width: 0.3vmin;
   display: contents;
 }
 
@@ -35,6 +42,24 @@
 
 .layout-sidebar__form > .layout-sidebar__section.layout-sidebar__form-actions:first-of-type {
   margin-bottom: 0;
+}
+
+.sidebar-select {
+  box-sizing: border-box;
+  font-size: var(--sidebar-select-font-size);
+  line-height: var(--sidebar-select-line-height);
+  padding: var(--sidebar-select-padding-vertical) var(--sidebar-select-padding-horizontal);
+  border: 0.05vmin solid ghostwhite;
+  color: ghostwhite;
+  border-radius: var(--sidebar-select-radius);
+  background-color: #2A2D34;
+  width: 100%;
+  box-shadow: 0 0 0.05vmin ghostwhite;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6" fill="none" stroke="ghostwhite" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 1em center;
+  background-size: 1em;
 }
 
 .layout-sidebar__message {

@@ -21,8 +21,25 @@
   cursor: pointer;
   width: auto;
   flex: 1;
-  transition: background-color 0.2s, transform 0.1s;
+  transition: background-color 0.2s, border-color 0.2s, transform 0.1s;
 }
+
+button.active {
+  background-color: #FF6F61;
+  border: 0.05vmin solid #FF6F61;
+}
+
+button.active:hover {
+  background-color: #e65b50;
+  border: 0.05vmin solid #e65b50;
+}
+
+button.active:active {
+  background-color: #cc4f45;
+  border-color: #cc4f45;
+  transform: scale(0.98);
+}
+
 
 .sidebar-button--white {
   background-color: ghostwhite;

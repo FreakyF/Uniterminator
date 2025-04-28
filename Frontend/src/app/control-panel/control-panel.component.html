@@ -4,15 +4,15 @@
     <div class="layout-sidebar__section layout-sidebar__form-actions">
       <control-button
         label="Parallelize"
+        [active]="mode === 'parallelize'"
         (click)="parallelize()"
-        (keydown.enter)="parallelize()"
-        [class.active]="mode === 'parallelize'">
+        (keydown.enter)="parallelize()">
       </control-button>
       <control-button
         label="Eliminate"
+        [active]="mode === 'eliminate'"
         (click)="eliminate()"
-        (keydown.enter)="eliminate()"
-        [class.active]="mode === 'eliminate'">
+        (keydown.enter)="eliminate()">
       </control-button>
     </div>
 
@@ -32,13 +32,16 @@
       placeholder="Expression B">
     </text-input>
 
-    <text-input
+    <select
       [(ngModel)]="operation"
       name="operation"
-      ariaLabel="Operation"
+      aria-label="Operation"
       id="operation"
-      placeholder="Operation">
-    </text-input>
+      class="sidebar-select">
+      <option value="" disabled selected>Select Operation</option>
+      <option value=",">Comma</option>
+      <option value=";">Semicolon</option>
+    </select>
 
     <text-input
       *ngIf="mode === 'eliminate'"
@@ -64,11 +67,13 @@
   <div class="layout-sidebar__section layout-sidebar__swap">
     <control-button
       label="Swap A"
+      [active]="isDrawn && swapMode === 'A'"
       (click)="onSwapA()"
       (keydown.enter)="onSwapA()">
     </control-button>
     <control-button
       label="Swap B"
+      [active]="isDrawn && swapMode === 'B'"
       (click)="onSwapB()"
       (keydown.enter)="onSwapB()">
     </control-button>
