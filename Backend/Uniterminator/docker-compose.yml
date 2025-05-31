@@ -1,0 +1,14 @@
+﻿services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: uniterminator-db
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=PasswordDevelopment123!
+    ports:
+      - "1433:1433"
+    volumes:
+      - db-data:/var/opt/mssql
+
+volumes:
+  db-data:
