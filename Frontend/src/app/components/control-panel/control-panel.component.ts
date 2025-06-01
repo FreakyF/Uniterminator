@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {TextInputComponent} from '../text-input/text-input.component';
 import {ControlButtonComponent} from '../control-button/control-button.component';
-import {ExpressionService} from '../expression.service';
+import {ExpressionService} from '../../expression.service';
 import {FormsModule} from '@angular/forms';
 import {NgIf} from '@angular/common';
 

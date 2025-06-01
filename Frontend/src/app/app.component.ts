@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 
-import {ControlPanelComponent} from './control-panel/control-panel.component';
-import {WorkspaceComponent} from './workspace/workspace.component';
-import {StoragePanelComponent} from './storage-panel/storage-panel.component';
-import {BannerComponent} from './banner/banner.component';
+import {ControlPanelComponent} from './components/control-panel/control-panel.component';
+import {WorkspaceComponent} from './components/workspace/workspace.component';
+import {StoragePanelComponent} from './components/storage-panel/storage-panel.component';
+import {BannerComponent} from './components/banner/banner.component';
 
 @Component({
   selector: 'app-root',

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ExpressionArcComponent} from '../expression-arc/expression-arc.component';
 import {ExpressionSegmentComponent} from '../expression-segment/expression-segment.component';
-import {EliminateParams, ExpressionService, ParallelParams} from '../expression.service';
+import {EliminateParams, ExpressionService, ParallelParams} from '../../expression.service';
 import {ExpressionArcWithSegmentComponent} from '../expression-arc-with-segment/expression-arc-with-segment.component';
 import {NgIf} from '@angular/common';
 

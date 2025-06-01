@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild} from '@angular/core';
 import {NgIf} from '@angular/common';
-import {EliminateParams} from '../expression.service';
+import {EliminateParams} from '../../expression.service';
 
 @Component({
   selector: 'expression-arc-with-segment',
