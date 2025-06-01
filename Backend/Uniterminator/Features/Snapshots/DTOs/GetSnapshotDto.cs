@@ -7,7 +7,7 @@ namespace Uniterminator.Features.Snapshots.DTOs;
 public abstract record GetSnapshotDto
 {
     public Guid Id { get; init; }
-    public DateTime SnapshotTime { get; init; }
+    public string SnapshotName { get; init; }  = null!;
     public GetParallelizeOperationDto? ParallelizeOperation { get; init; }
     public GetEliminateOperationDto? EliminateOperation { get; init; }
 }

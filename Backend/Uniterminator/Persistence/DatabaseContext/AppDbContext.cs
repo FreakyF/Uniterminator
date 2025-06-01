@@ -5,8 +5,8 @@ namespace Uniterminator.Persistence.DatabaseContext;
 
 public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options), IAppDbContext
 {
-    public DbSet<ParallelizeOperation> ParallelizeOperations => null!;
-    public DbSet<EliminateOperation> EliminateOperations => null!;
+    public static DbSet<ParallelizeOperation> ParallelizeOperations => null!;
+    public static DbSet<EliminateOperation> EliminateOperations => null!;
     public DbSet<Snapshot> Snapshots => null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -22,7 +22,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 
         entity.HasKey(s => s.Id);
 
-        entity.Property(s => s.SnapshotTime)
+        entity.Property(s => s.SnapshotName)
             .IsRequired();
     }
 

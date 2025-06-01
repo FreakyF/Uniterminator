@@ -30,7 +30,7 @@ public static class MappingConfig
         TypeAdapterConfig<CreateSnapshotDto, Snapshot>
             .NewConfig()
             .Map(dest => dest.Id, src => Guid.NewGuid())
-            .Map(dest => dest.SnapshotTime, src => src.SnapshotTime)
+            .Map(dest => dest.SnapshotName, src => src.SnapshotName)
             .Map(dest => dest.ParallelizeOperation,
                 src => src.ParallelizeOperation != null
                     ? src.ParallelizeOperation.Adapt<ParallelizeOperation>()

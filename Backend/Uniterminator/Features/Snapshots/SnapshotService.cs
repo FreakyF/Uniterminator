@@ -62,12 +62,12 @@ public class SnapshotService(IAppDbContext dbContext) : ISnapshotService
         var snapshotEntity = new Snapshot
         {
             Id = Guid.NewGuid(),
-            SnapshotTime = dto.SnapshotTime
+            SnapshotName = dto.SnapshotName
         };
 
         if (dto.ParallelizeOperation is not null)
         {
-            var p = dto.ParallelizeOperation; // CreateParallelizeOperationDto
+            var p = dto.ParallelizeOperation;
             snapshotEntity = snapshotEntity with
             {
                 ParallelizeOperation = new ParallelizeOperation
