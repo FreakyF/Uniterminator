@@ -13,6 +13,7 @@ public static class ApplicationBuilderExtensions
             app.MapScalarApiReference();
         }
 
+        app.UseCors("Spa");
         app.UseHttpsRedirection();
         app.UseAuthorization();
 

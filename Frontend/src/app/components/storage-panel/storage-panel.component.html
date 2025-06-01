@@ -1,4 +1,15 @@
 <aside class="layout__aside storage-panel">
-  <div class="text">{{ text }}</div>
-  <ng-icon class="title-header__icon-img" name="matTransformOutline" size="4cqi"></ng-icon>
+  <div
+    class="snapshot-row"
+    *ngFor="let snap of snapshots">
+    <div class="text">{{ snap.snapshotName }}</div>
+
+    <ng-icon
+      class="title-header__icon-img"
+      name="matDeleteOutline"
+      size="1.2cqi"
+      (click)="onDelete(snap.id)"
+      title="Usuń"
+    ></ng-icon>
+  </div>
 </aside>

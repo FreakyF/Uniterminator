@@ -1,7 +1,7 @@
 import {
-  AfterViewInit,
+  AfterViewInit, ChangeDetectorRef,
   Component,
-  ElementRef,
+  ElementRef, inject,
   Input,
   OnChanges,
   SimpleChanges,
@@ -29,6 +29,8 @@ export class ExpressionArcComponent implements AfterViewInit, OnChanges {
   private readonly horizontalGap  = 20;
   private readonly topPadding     = 20;
 
+  private readonly cd = inject(ChangeDetectorRef);
+
   ngAfterViewInit(): void {
     const svg = this.svgRoot.nativeElement;
 
@@ -38,7 +40,10 @@ export class ExpressionArcComponent implements AfterViewInit, OnChanges {
     svg.setAttribute('width',  '50vmin');
     svg.setAttribute('height', `${(50 * 100/600).toFixed(2)}vmin`);
 
-    this.render();
+    queueMicrotask(() => {
+      this.render();
+      this.cd.detectChanges();
+    });
   }
 
   ngOnChanges(_: SimpleChanges): void {
