@@ -5,9 +5,9 @@ namespace Uniterminator.Persistence.DatabaseContext;
 
 public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options), IAppDbContext
 {
-    public DbSet<Snapshot> Snapshots { get; } = null!;
-    public DbSet<ParallelizeOperation> ParallelizeOperations { get; } = null!;
-    public DbSet<EliminateOperation> EliminateOperations { get; } = null!;
+    public DbSet<ParallelizeOperation> ParallelizeOperations => null!;
+    public DbSet<EliminateOperation> EliminateOperations => null!;
+    public DbSet<Snapshot> Snapshots => null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -40,9 +40,12 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
             .IsRequired();
 
         entity.HasOne(po => po.Snapshot)
-            .WithMany(s => s.ParallelizeOperations)
-            .HasForeignKey(po => po.SnapshotId)
+            .WithOne(s => s.ParallelizeOperation)
+            .HasForeignKey<ParallelizeOperation>(po => po.SnapshotId)
             .OnDelete(DeleteBehavior.Cascade);
+
+        entity.HasIndex(po => po.SnapshotId)
+            .IsUnique();
     }
 
     private static void ConfigureEliminateOperation(ModelBuilder modelBuilder)
@@ -61,8 +64,11 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
             .IsRequired();
 
         entity.HasOne(eo => eo.Snapshot)
-            .WithMany(s => s.EliminateOperations)
-            .HasForeignKey(eo => eo.SnapshotId)
+            .WithOne(s => s.EliminateOperation)
+            .HasForeignKey<EliminateOperation>(eo => eo.SnapshotId)
             .OnDelete(DeleteBehavior.Cascade);
+
+        entity.HasIndex(eo => eo.SnapshotId)
+            .IsUnique();
     }
 }

@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Scalar.AspNetCore;
+using Uniterminator.Extensions;
 using Uniterminator.Persistence.DatabaseContext;
 
 namespace Uniterminator;
@@ -10,13 +10,7 @@ public static class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-        builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
-
-        builder.Services.AddScoped<IAppDbContext>(provider => provider.GetRequiredService<AppDbContext>());
-
-        builder.Services.AddAuthorization();
-        builder.Services.AddOpenApi();
+        builder.Services.AddApplicationServices(builder.Configuration);
 
         var app = builder.Build();
 
@@ -26,14 +20,7 @@ public static class Program
             db.Database.Migrate();
         }
 
-        if (app.Environment.IsDevelopment())
-        {
-            app.MapOpenApi();
-            app.MapScalarApiReference();
-        }
-
-        app.UseHttpsRedirection();
-        app.UseAuthorization();
+        app.UseApplicationConfiguration();
 
         app.Run();
     }
