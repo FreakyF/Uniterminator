@@ -2,14 +2,18 @@
   <div
     class="snapshot-row"
     *ngFor="let snap of snapshots">
-    <div class="text">{{ snap.snapshotName }}</div>
+    <div
+      class="text snapshot-name"
+      (click)="onSelect(snap.id)"
+    >
+      {{ snap.snapshotName }}
+    </div>
 
     <ng-icon
       class="title-header__icon-img"
       name="matDeleteOutline"
       size="1.2cqi"
       (click)="onDelete(snap.id)"
-      title="Delete"
     ></ng-icon>
   </div>
 </aside>

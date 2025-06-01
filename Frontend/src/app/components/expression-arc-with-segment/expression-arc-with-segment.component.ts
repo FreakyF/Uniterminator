@@ -10,7 +10,7 @@ import {
   ViewChild
 } from '@angular/core';
 import {NgIf} from '@angular/common';
-import {EliminateParams} from '../../expression.service';
+import {EliminateParams} from '../../services/expression.service';
 
 @Component({
   selector: 'expression-arc-with-segment',

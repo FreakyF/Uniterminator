@@ -39,3 +39,7 @@
   color: #FF6F61;
   cursor: pointer;
 }
+
+.snapshot-name {
+  cursor: pointer;
+}
