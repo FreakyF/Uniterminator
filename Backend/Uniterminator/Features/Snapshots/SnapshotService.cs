@@ -39,6 +39,8 @@ public class SnapshotService(IAppDbContext dbContext) : ISnapshotService
         }
 
         var snapshotEntity = BuildSnapshotEntity(dto);
+        
+        
         dbContext.Snapshots.Add(snapshotEntity);
         await dbContext.SaveChangesAsync();
 
@@ -76,49 +78,45 @@ public class SnapshotService(IAppDbContext dbContext) : ISnapshotService
 
     private static Snapshot BuildSnapshotEntity(CreateSnapshotDto dto)
     {
-        var snapshotEntity = new Snapshot
-        {
-            Id = Guid.NewGuid(),
-            SnapshotName = dto.SnapshotName
-        };
+        var snapshotId = Guid.NewGuid();   // use once, reuse everywhere
 
+        // child objects *first* – we can refer to snapshotId, but not to snapshotEntity
+        ParallelizeOperation? parallel = null;
         if (dto.ParallelizeOperation is not null)
         {
             var p = dto.ParallelizeOperation;
-            snapshotEntity = snapshotEntity with
+            parallel = new ParallelizeOperation
             {
-                ParallelizeOperation = new ParallelizeOperation
-                {
-                    Id = Guid.NewGuid(),
-                    SnapshotId = snapshotEntity.Id,
-                    Snapshot = snapshotEntity,
-                    ExpressionA = p.ExpressionA,
-                    ExpressionB = p.ExpressionB,
-                    OperationSymbol = p.OperationSymbol
-                }
+                Id            = Guid.NewGuid(),
+                SnapshotId    = snapshotId,
+                ExpressionA   = p.ExpressionA,
+                ExpressionB   = p.ExpressionB,
+                OperationSymbol = p.OperationSymbol
             };
         }
 
-        if (dto.EliminateOperation is null)
+        EliminateOperation? eliminate = null;
+        if (dto.EliminateOperation is not null)
         {
-            return snapshotEntity;
-        }
-
-        var e = dto.EliminateOperation;
-        snapshotEntity = snapshotEntity with
-        {
-            EliminateOperation = new EliminateOperation
+            var e = dto.EliminateOperation;
+            eliminate = new EliminateOperation
             {
-                Id = Guid.NewGuid(),
-                SnapshotId = snapshotEntity.Id,
-                Snapshot = snapshotEntity,
-                ExpressionA = e.ExpressionA,
-                ExpressionB = e.ExpressionB,
+                Id            = Guid.NewGuid(),
+                SnapshotId    = snapshotId,
+                ExpressionA   = e.ExpressionA,
+                ExpressionB   = e.ExpressionB,
                 OperationSymbol = e.OperationSymbol,
                 ExpressionExtra = e.ExpressionExtra
-            }
-        };
+            };
+        }
 
-        return snapshotEntity;
+        // now create the parent – *all* init-only props are set here
+        return new Snapshot
+        {
+            Id                 = snapshotId,
+            SnapshotName       = dto.SnapshotName,
+            ParallelizeOperation = parallel,
+            EliminateOperation   = eliminate
+        };
     }
 }

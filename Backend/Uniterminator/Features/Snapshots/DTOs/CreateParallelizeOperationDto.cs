@@ -4,7 +4,7 @@ namespace Uniterminator.Features.Snapshots.DTOs;
 
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
 [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
-public abstract record CreateParallelizeOperationDto
+public record CreateParallelizeOperationDto
 {
     public string ExpressionA { get; init; } = null!;
     public string ExpressionB { get; init; } = null!;

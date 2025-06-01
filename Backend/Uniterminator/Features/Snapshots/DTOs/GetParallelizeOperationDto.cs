@@ -3,7 +3,7 @@
 namespace Uniterminator.Features.Snapshots.DTOs;
 
 [SuppressMessage("ReSharper", "UnusedMember.Global")]
-public abstract record GetParallelizeOperationDto
+public record GetParallelizeOperationDto
 {
     public Guid Id { get; init; }
     public string ExpressionA { get; init; } = null!;

@@ -7,7 +7,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 {
     public static DbSet<ParallelizeOperation> ParallelizeOperations => null!;
     public static DbSet<EliminateOperation> EliminateOperations => null!;
-    public DbSet<Snapshot> Snapshots => null!;
+    public DbSet<Snapshot> Snapshots { get; init; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

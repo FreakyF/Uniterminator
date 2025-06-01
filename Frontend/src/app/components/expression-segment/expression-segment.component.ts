@@ -1,4 +1,14 @@
-import {AfterViewInit, Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild} from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  inject,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  ViewChild
+} from '@angular/core';
 
 @Component({
   selector: 'expression-segment',
@@ -29,8 +39,13 @@ export class ExpressionSegmentComponent implements AfterViewInit, OnChanges {
   private readonly displayWidth = 50;
   private readonly displayHeight = 200 * (100 / 600);
 
+  private readonly cd = inject(ChangeDetectorRef);
+
   ngAfterViewInit(): void {
-    this.render();
+    queueMicrotask(() => {
+      this.render();
+      this.cd.detectChanges();
+    });
   }
 
   ngOnChanges(_: SimpleChanges): void {

@@ -1,4 +1,14 @@
-import {AfterViewInit, Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild} from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  inject,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  ViewChild
+} from '@angular/core';
 import {NgIf} from '@angular/common';
 import {EliminateParams} from '../../expression.service';
 
@@ -38,8 +48,13 @@ export class ExpressionArcWithSegmentComponent implements AfterViewInit, OnChang
 
   private readonly displayWidth = 15;
 
+  private readonly cd = inject(ChangeDetectorRef);
+
   ngAfterViewInit(): void {
-    this.render();
+    queueMicrotask(() => {
+      this.render();
+      this.cd.detectChanges();
+    });
   }
 
   ngOnChanges(_: SimpleChanges): void {

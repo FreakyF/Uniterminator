@@ -3,6 +3,6 @@
 public record Snapshot : BaseEntity
 {
     public required string SnapshotName { get; init; }
-    public ParallelizeOperation? ParallelizeOperation { get; init; }
-    public EliminateOperation? EliminateOperation { get; init; }
+    public ParallelizeOperation? ParallelizeOperation { get; set; }
+    public EliminateOperation? EliminateOperation { get; set; }
 }

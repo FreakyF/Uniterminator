@@ -87,10 +87,16 @@
   </div>
   <div class="layout-sidebar__section layout-sidebar__save">
     <text-input
+      [(ngModel)]="snapshotName"
       ariaLabel="Name"
       id="name"
       placeholder="Name">
     </text-input>
-    <control-button label="Save"></control-button>
+
+    <control-button
+      label="Save"
+      (click)="save()"
+      (keydown.enter)="save()">
+    </control-button>
   </div>
 </aside>
