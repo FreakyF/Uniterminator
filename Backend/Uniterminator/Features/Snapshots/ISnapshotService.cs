@@ -7,4 +7,5 @@ public interface ISnapshotService
     Task<List<GetSnapshotDto>> GetAllAsync();
     Task<GetSnapshotDto?> GetByIdAsync(Guid id);
     Task<GetSnapshotDto> CreateAsync(CreateSnapshotDto dto);
+    Task<DeleteSnapshotDto?> DeleteAsync(Guid id);
 }

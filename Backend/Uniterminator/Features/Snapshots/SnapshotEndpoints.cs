@@ -11,6 +11,7 @@ public static class SnapshotEndpoints
         app.MapGet(BaseRoute, GetAllSnapshots).WithName("GetAllSnapshots");
         app.MapGet($"{BaseRoute}/{{id:guid}}", GetSnapshotById).WithName("GetSnapshotById");
         app.MapPost(BaseRoute, CreateSnapshot).WithName("CreateSnapshot");
+        app.MapDelete($"{BaseRoute}/{{id:guid}}", DeleteSnapshotById).WithName("DeleteSnapshotById");
     }
 
     private static async Task<IResult> GetAllSnapshots(ISnapshotService service)
@@ -38,5 +39,12 @@ public static class SnapshotEndpoints
         {
             return Results.BadRequest(ex.Message);
         }
+    }
+
+    private static async Task<IResult> DeleteSnapshotById(Guid id, ISnapshotService service)
+    {
+        var deletedDto = await service.DeleteAsync(id);
+
+        return deletedDto is null ? Results.NotFound() : Results.NoContent();
     }
 }

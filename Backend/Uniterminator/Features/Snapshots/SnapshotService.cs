@@ -45,6 +45,23 @@ public class SnapshotService(IAppDbContext dbContext) : ISnapshotService
         return snapshotEntity.Adapt<GetSnapshotDto>();
     }
 
+    public async Task<DeleteSnapshotDto?> DeleteAsync(Guid id)
+    {
+        var snapshot = await dbContext.Snapshots
+            .FirstOrDefaultAsync(s => s.Id == id);
+
+        if (snapshot == null)
+        {
+            return null;
+        }
+
+        dbContext.Snapshots.Remove(snapshot);
+        await dbContext.SaveChangesAsync();
+
+        var deletedDto = snapshot.Adapt<DeleteSnapshotDto>();
+        return deletedDto;
+    }
+
     private static string? ValidateCreateSnapshotDto(CreateSnapshotDto dto)
     {
         var hasParallelize = dto.ParallelizeOperation is not null;

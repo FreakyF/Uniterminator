@@ -50,5 +50,9 @@ public static class MappingConfig
             .NewConfig()
             .Map(dest => dest.ParallelizeOperation, src => src.ParallelizeOperation)
             .Map(dest => dest.EliminateOperation, src => src.EliminateOperation);
+
+        TypeAdapterConfig<Snapshot, DeleteSnapshotDto>
+            .NewConfig()
+            .Map(dest => dest.Id, src => src.Id);
     }
 }

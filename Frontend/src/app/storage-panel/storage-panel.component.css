@@ -13,3 +13,13 @@
   border-radius: 1.6vmin;
   padding: 1.6vmin;
 }
+
+.storage-panel {
+  display: flex;
+  align-items: start;
+}
+
+.title-header__icon-img {
+  color: #FF6F61;
+  margin-left: 0.5vmin;
+}
