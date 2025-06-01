@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Uniterminator.Entities;
+using Uniterminator.Persistence.Entities;
 
 namespace Uniterminator.Persistence.DatabaseContext;
 

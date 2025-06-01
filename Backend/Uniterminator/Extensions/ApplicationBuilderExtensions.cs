@@ -1,4 +1,5 @@
 ﻿using Scalar.AspNetCore;
+using Uniterminator.Features.Snapshots;
 
 namespace Uniterminator.Extensions;
 

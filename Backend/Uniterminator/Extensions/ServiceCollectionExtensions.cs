@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Uniterminator.Features.Snapshots;
+using Uniterminator.Features.Snapshots.Mapping;
 using Uniterminator.Persistence.DatabaseContext;
 
 namespace Uniterminator.Extensions;

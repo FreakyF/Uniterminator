@@ -1,10 +1,10 @@
 ﻿using Mapster;
 using Microsoft.EntityFrameworkCore;
-using Uniterminator.DTOs;
-using Uniterminator.Entities;
+using Uniterminator.Features.Snapshots.DTOs;
 using Uniterminator.Persistence.DatabaseContext;
+using Uniterminator.Persistence.Entities;
 
-namespace Uniterminator;
+namespace Uniterminator.Features.Snapshots;
 
 public class SnapshotService(IAppDbContext dbContext) : ISnapshotService
 {

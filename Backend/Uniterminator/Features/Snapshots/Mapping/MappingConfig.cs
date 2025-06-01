@@ -1,8 +1,8 @@
 ﻿using Mapster;
-using Uniterminator.DTOs;
-using Uniterminator.Entities;
+using Uniterminator.Features.Snapshots.DTOs;
+using Uniterminator.Persistence.Entities;
 
-namespace Uniterminator;
+namespace Uniterminator.Features.Snapshots.Mapping;
 
 public static class MappingConfig
 {

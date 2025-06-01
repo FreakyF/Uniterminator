@@ -1,6 +1,6 @@
-﻿using Uniterminator.DTOs;
+﻿using Uniterminator.Features.Snapshots.DTOs;
 
-namespace Uniterminator;
+namespace Uniterminator.Features.Snapshots;
 
 public static class SnapshotEndpoints
 {

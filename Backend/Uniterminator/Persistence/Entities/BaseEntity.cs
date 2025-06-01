@@ -1,4 +1,4 @@
-﻿namespace Uniterminator.Entities;
+﻿namespace Uniterminator.Persistence.Entities;
 
 public record BaseEntity
 {
