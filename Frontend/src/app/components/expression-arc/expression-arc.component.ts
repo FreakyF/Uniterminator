@@ -1,7 +1,9 @@
 import {
-  AfterViewInit, ChangeDetectorRef,
+  AfterViewInit,
+  ChangeDetectorRef,
   Component,
-  ElementRef, inject,
+  ElementRef,
+  inject,
   Input,
   OnChanges,
   SimpleChanges,
@@ -18,16 +20,18 @@ export class ExpressionArcComponent implements AfterViewInit, OnChanges {
   @Input() operatorSymbol = '';
   @Input() expressionB = '';
 
-  @ViewChild('svgRoot', { static: true }) svgRoot!: ElementRef<SVGSVGElement>;
-  @ViewChild('textA',    { static: true }) textA!:    ElementRef<SVGTextElement>;
-  @ViewChild('textOperator',{static: true}) textOperator!: ElementRef<SVGTextElement>;
-  @ViewChild('textB',    { static: true }) textB!:    ElementRef<SVGTextElement>;
+  @ViewChild('svgRoot', {static: true}) svgRoot!: ElementRef<SVGSVGElement>;
+  @ViewChild('textA', {static: true}) textA!: ElementRef<SVGTextElement>;
+  @ViewChild('textOperator', {static: true}) textOperator!: ElementRef<SVGTextElement>;
+  @ViewChild('textB', {static: true}) textB!: ElementRef<SVGTextElement>;
 
   public arcPath = '';
 
-  private readonly fontSize       = 48;
-  private readonly horizontalGap  = 20;
-  private readonly topPadding     = 20;
+  private readonly fontSize = 48;
+  private readonly horizontalGap = 20;
+  private readonly topPadding = 20;
+  private readonly tickLength = 16;
+
 
   private readonly cd = inject(ChangeDetectorRef);
 
@@ -37,8 +41,8 @@ export class ExpressionArcComponent implements AfterViewInit, OnChanges {
     svg.setAttribute('viewBox', '0 0 600 100');
     svg.setAttribute('preserveAspectRatio', 'xMinYMin meet');
 
-    svg.setAttribute('width',  '50vmin');
-    svg.setAttribute('height', `${(50 * 100/600).toFixed(2)}vmin`);
+    svg.setAttribute('width', '50vmin');
+    svg.setAttribute('height', `${(50 * 100 / 600).toFixed(2)}vmin`);
 
     queueMicrotask(() => {
       this.render();
@@ -56,22 +60,22 @@ export class ExpressionArcComponent implements AfterViewInit, OnChanges {
     this.applyFontSize();
 
     const expressionAWidth = this.resetAndMeasure(this.textA);
-    const operatorWidth    = this.resetAndMeasure(this.textOperator);
+    const operatorWidth = this.resetAndMeasure(this.textOperator);
     this.resetAndMeasure(this.textB);
 
-    const xA         = this.horizontalGap;
-    const xOperator  = xA + expressionAWidth + this.horizontalGap;
-    const xB         = xOperator + operatorWidth + this.horizontalGap;
-    const baselineY  = this.fontSize + this.topPadding;
+    const xA = this.horizontalGap;
+    const xOperator = xA + expressionAWidth + this.horizontalGap;
+    const xB = xOperator + operatorWidth + this.horizontalGap;
+    const baselineY = this.fontSize + this.topPadding;
 
-    this.setPosition(this.textA,      xA,        baselineY);
-    this.setPosition(this.textOperator,xOperator, baselineY);
-    this.setPosition(this.textB,      xB,        baselineY);
+    this.setPosition(this.textA, xA, baselineY);
+    this.setPosition(this.textOperator, xOperator, baselineY);
+    this.setPosition(this.textB, xB, baselineY);
 
     const boxA = this.textA.nativeElement.getBBox();
     const boxB = this.textB.nativeElement.getBBox();
 
-    this.arcPath = this.buildArc(boxA, boxB);
+    this.arcPath = this.buildLine(boxA, boxB);
   }
 
   private applyFontSize(): void {
@@ -99,11 +103,22 @@ export class ExpressionArcComponent implements AfterViewInit, OnChanges {
     el.setAttribute('y', `${y}`);
   }
 
-  private buildArc(boxA: DOMRect, boxB: DOMRect): string {
-    const yTop   = Math.min(boxA.y, boxB.y);
+  private buildLine(boxA: DOMRect, boxB: DOMRect): string {
+    if (boxA.width === 0 && boxB.width === 0) {
+      return '';
+    }
+
+    const yTop = Math.min(boxA.y, boxB.y);
+
     const xStart = boxA.x + boxA.width / 2;
-    const xEnd   = boxB.x + boxB.width / 2;
-    const radius = xEnd - xStart;
-    return `M ${xStart} ${yTop} A ${radius} ${radius} 0 0 1 ${xEnd} ${yTop}`;
+    const xEnd = boxB.x + boxB.width / 2;
+
+    const half = this.tickLength / 2;
+
+    return [
+      `M ${xStart} ${yTop} L ${xEnd} ${yTop}`,
+      `M ${xStart} ${yTop - half} L ${xStart} ${yTop + half}`,
+      `M ${xEnd}   ${yTop - half} L ${xEnd}   ${yTop + half}`
+    ].join(' ');
   }
 }
