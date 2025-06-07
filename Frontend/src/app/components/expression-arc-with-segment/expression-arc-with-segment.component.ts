@@ -186,11 +186,22 @@ export class ExpressionArcWithSegmentComponent implements AfterViewInit, OnChang
   }
 
   private buildArc(boxA: DOMRect, boxB: DOMRect): string {
+    if (boxA.width === 0 && boxB.width === 0) {
+      return '';
+    }
+
     const yTop = Math.min(boxA.y, boxB.y);
+
     const xStart = boxA.x + boxA.width / 2;
     const xEnd = boxB.x + boxB.width / 2;
-    const radius = xEnd - xStart;
-    return `M ${xStart} ${yTop} A ${radius} ${radius} 0 0 1 ${xEnd} ${yTop}`;
+
+    const half = this.tickLength / 2;
+
+    return [
+      `M ${xStart} ${yTop} L ${xEnd} ${yTop}`,
+      `M ${xStart} ${yTop - half} L ${xStart} ${yTop + half}`,
+      `M ${xEnd}   ${yTop - half} L ${xEnd}   ${yTop + half}`
+    ].join(' ');
   }
 
   private setSvgSize(width: number, height: number) {
