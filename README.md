@@ -3,7 +3,7 @@
 A specialized visualization engine designed to model, persist, and render complex parallel and elimination uniterm operations utilizing dynamic vector graphics and a reactive distributed architecture.
 
 ## 📺 Demo & Visuals
-Visual representation of the system in operation.
+*Visual representation of the system in operation.*
 
 🚧 *Coming Soon*
 
