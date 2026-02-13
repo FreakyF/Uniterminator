@@ -5,7 +5,10 @@ A specialized visualization engine designed to model, persist, and render comple
 ## 📺 Demo & Visuals
 *Visual representation of the system in operation.*
 
-🚧 *Coming Soon*
+* **Parallelize:** ![Parallelize Operation](/Docs/Screenshots/Parallelize%20Operation.png)
+* **Eliminate:** ![Eliminate Operation](/Docs/Screenshots/Eliminate%20Operation.png)
+* **Swap Transformations:** ![Swap A](/Docs/Screenshots/Swap%20A%20Operation.png) ![Swap B](/Docs/Screenshots/Swap%20B%20Operation.png)
+* **Persistence & Cleanup:** ![Save State](/Docs/Screenshots/Save.png) ![Remove Element](/Docs/Screenshots/Remove.png)
 
 ## 🏗️ Architecture & Context
 *High-level system design and execution model.*
